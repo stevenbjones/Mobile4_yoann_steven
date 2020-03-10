@@ -6,4 +6,4 @@ week 1: 4uur
 
 week 4:
 
--Les 2uur
+-Les 4uur
