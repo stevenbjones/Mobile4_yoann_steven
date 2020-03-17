@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "500602323049",
+    "firebase_url": "https://bumpy-belly.firebaseio.com",
+    "project_id": "bumpy-belly",
+    "storage_bucket": "bumpy-belly.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500602323049:android:8a83e95cd52c2d446da2f8",
+        "android_client_info": {
+          "package_name": "com.example.bumpybelly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500602323049-p1i2kqt2dhpqm18na4p63l046hlj9gb3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bumpybelly",
+            "certificate_hash": "bfb510a5491011b967039949240fc837d90bcea9"
+          }
+        },
+        {
+          "client_id": "500602323049-dv4ataa9onurbi28mcaveih4mp74pbo1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHGNdEoMVIjPXyvWQXXgaS2Pu3SAfJQqo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500602323049-dv4ataa9onurbi28mcaveih4mp74pbo1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
