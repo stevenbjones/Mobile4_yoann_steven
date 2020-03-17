@@ -1,0 +1,13 @@
+De gebruiker kan aanmelden
+Een gebruiker kan aangemaakt worden
+Een gebruiker kan verwijderd worden
+
+Bij aanmaken van user meegeven hoe lang zwanger
+
+Homescherm: 
+	-Met foto van groote baby 
+	-Met tabel wat er toegevoegd is
+	-Weetjes
+
+Agenda waar een afspraak aangemaakt kan worden
+
