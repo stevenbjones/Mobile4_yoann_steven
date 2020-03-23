@@ -14,13 +14,14 @@ package com.example.bumpy_belly2
     import com.firebase.ui.auth.AuthUI
     import com.firebase.ui.auth.IdpResponse
     import com.google.firebase.auth.FirebaseAuth
+    import kotlinx.android.synthetic.main.activity_main.*
     import kotlinx.android.synthetic.main.fragment_home_page.*
     import java.util.*
 
     class MainActivity : AppCompatActivity() {
         var navController: NavController? = null
 
-
+        var Nalogin: Boolean = false
         val MY_REQUEST_CODE: Int = 7117
         lateinit var providers : List<AuthUI.IdpConfig>
 
@@ -48,7 +49,8 @@ package com.example.bumpy_belly2
                     val user = FirebaseAuth.getInstance().currentUser // get the current user
                     Toast.makeText(this, ""+user!!.email,Toast.LENGTH_SHORT).show()
 
-                    sign_out.isEnabled = true
+                    //weet niet of dit een goeie methode is om het te doen
+                    nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
                 }
                 else{
                     Toast.makeText(this, ""+response!!.error!!.message,Toast.LENGTH_SHORT).show()
@@ -57,14 +59,15 @@ package com.example.bumpy_belly2
             }
         }
 
-//Deze functie werkt tijfdelijk niet
         fun signout(){
             sign_out.setOnClickListener {
                 //signout
                 AuthUI.getInstance().signOut(this@MainActivity)
                     .addOnCompleteListener {
                         sign_out.isEnabled = false
-                        showSignInOptions()
+                       // showSignInOptions()
+                        //nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
+
                     }
                     .addOnFailureListener {
                             e ->   Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()

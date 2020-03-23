@@ -25,19 +25,16 @@ class WelcomeFragment : Fragment() {
 
     }
 
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_welcome, container, false)
-        val view2: View = inflater.inflate(R.layout.fragment_home_page, container, false)
 
         view.Login.setOnClickListener {
             (activity as MainActivity).showSignInOptions()
+
+          //  navController!!.navigate(R.id.action_welcomeFragment2_to_homePage2)
            }
         // Inflate the layout for this fragment
         return view
