@@ -14,6 +14,8 @@ package com.example.bumpy_belly2
     import com.firebase.ui.auth.AuthUI
     import com.firebase.ui.auth.IdpResponse
     import com.google.firebase.auth.FirebaseAuth
+    import com.google.firebase.firestore.ktx.firestore
+    import com.google.firebase.ktx.Firebase
     import kotlinx.android.synthetic.main.activity_main.*
     import kotlinx.android.synthetic.main.fragment_home_page.*
     import java.util.*
@@ -25,16 +27,19 @@ package com.example.bumpy_belly2
         val MY_REQUEST_CODE: Int = 7117
         lateinit var providers : List<AuthUI.IdpConfig>
 
+
+
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
-
 
             providers = Arrays.asList<AuthUI.IdpConfig>(
                 AuthUI.IdpConfig.EmailBuilder().build(),// email build
                 AuthUI.IdpConfig.GoogleBuilder().build(),// Google build
                 AuthUI.IdpConfig.PhoneBuilder().build()// Phone build
             )
+
+
             // showSignInOptions()
         }
 
@@ -48,6 +53,14 @@ package com.example.bumpy_belly2
                 if(resultCode == Activity.RESULT_OK){
                     val user = FirebaseAuth.getInstance().currentUser // get the current user
                     Toast.makeText(this, ""+user!!.email,Toast.LENGTH_SHORT).show()
+
+                   val user2 = hashMapOf(
+                        "FirstName" to "Ada",
+                       "LastName" to "Lovelace",
+                        "UserId" to "1815"
+                    )
+                    val db = Firebase.firestore
+                    db.collection("Users").add(user2)
 
                     //weet niet of dit een goeie methode is om het te doen
                     nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
