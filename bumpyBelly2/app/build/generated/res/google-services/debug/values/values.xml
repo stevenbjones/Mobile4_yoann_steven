@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">547480156995-2mkbghg0du9mvc71o6sgns1o94u52mjq.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://bumpybelly2-cba8d.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">547480156995</string>
+    <string name="google_api_key" translatable="false">AIzaSyAVP48AwWTeLNXKNPoBE3rxhsoY34ydx9c</string>
+    <string name="google_app_id" translatable="false">1:547480156995:android:0c28a03b3b63d9111a4df6</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAVP48AwWTeLNXKNPoBE3rxhsoY34ydx9c</string>
+    <string name="google_storage_bucket" translatable="false">bumpybelly2-cba8d.appspot.com</string>
+    <string name="project_id" translatable="false">bumpybelly2-cba8d</string>
+</resources>
