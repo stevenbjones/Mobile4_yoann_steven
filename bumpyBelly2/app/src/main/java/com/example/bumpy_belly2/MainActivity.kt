@@ -60,10 +60,12 @@ class MainActivity : AppCompatActivity() {
 
                   //fqsd
 
+                    //Maak hash om toe te kunnen voegen in database
                     val testUser = hashMapOf(
                         "UserId" to user.uid
                     )
 
+                    //Voeg het toe aan de database
                     db.collection("Users").document(user.email.toString())
                         .set(testUser)
                         .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
