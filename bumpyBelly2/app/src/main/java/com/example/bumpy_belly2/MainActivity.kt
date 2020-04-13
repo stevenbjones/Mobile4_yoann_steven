@@ -6,6 +6,7 @@ package com.example.bumpy_belly2
     import android.content.Intent
     import android.os.Bundle
     import android.util.Log
+    import android.widget.TextView
     import android.widget.Toast
     import androidx.appcompat.app.AppCompatActivity
     import androidx.navigation.NavController
@@ -26,7 +27,8 @@ class MainActivity : AppCompatActivity() {
     }
         var navController: NavController? = null
 
-        var Nalogin: Boolean = false
+
+    var Nalogin: Boolean = false
         val MY_REQUEST_CODE: Int = 7117
 
         //Instantie van firestore database
@@ -34,7 +36,9 @@ class MainActivity : AppCompatActivity() {
 
         lateinit var providers : List<AuthUI.IdpConfig>
 
-        override fun onCreate(savedInstanceState: Bundle?) {
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
 
@@ -71,11 +75,15 @@ class MainActivity : AppCompatActivity() {
                         .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
                         .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
 
-
-
-
                     //weet niet of dit een goeie methode is om het te doen
                     nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
+
+
+                    //Het invullen van de weetjes
+                    //Hier moet dus de weetjes van de dag ingevuld worden in plaats van "hier komen de weetjes"
+                     findViewById<TextView>(R.id.TxtWeetjes).text = "hier komen de weetjes"
+
+
                 }
                 else{
                     Toast.makeText(this, ""+response!!.error!!.message,Toast.LENGTH_SHORT).show()
