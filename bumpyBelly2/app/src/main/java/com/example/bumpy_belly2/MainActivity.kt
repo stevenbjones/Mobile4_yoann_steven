@@ -75,13 +75,14 @@ class MainActivity : AppCompatActivity() {
                     //weet niet of dit een goeie methode is om het te doen
                     nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
 
-                    val weetje = ""
+                    //Haal fact 1 uit de database
                     val docRef = db.collection("Facts").document("1")
                     docRef.get()
                         .addOnSuccessListener { document ->
                             if (document != null) {
                                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
 
+                                //Vul textfield met het field FACT van fact1
                                 findViewById<TextView>(R.id.TxtWeetjes).text = document.getString("Fact")
 
                             } else {
