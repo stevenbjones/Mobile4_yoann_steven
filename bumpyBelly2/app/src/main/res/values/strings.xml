@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Bumpy_belly2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Name">Name</string>
+    <string name="FirstName">First name</string>
+    <string name="LastName">Last name</string>
+    <string name="Weeks">Weeks</string>
+    <string name="Register">Register</string>
 </resources>

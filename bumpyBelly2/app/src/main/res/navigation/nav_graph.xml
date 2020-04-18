@@ -24,7 +24,19 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_homePage2"
+            android:id="@+id/action_welcomeFragment_to_zwangerschapRegistratieFragment"
+            app:destination="@id/zwangerschapRegistratieFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_homePage22"
+            app:destination="@id/homePage2" />
+    </fragment>
+    <fragment
+        android:id="@+id/zwangerschapRegistratieFragment"
+        android:name="com.example.bumpy_belly2.ZwangerschapRegistratieFragment"
+        android:label="fragment_zwangerschap_registratie"
+        tools:layout="@layout/fragment_zwangerschap_registratie" >
+        <action
+            android:id="@+id/action_zwangerschapRegistratieFragment_to_homePage22"
             app:destination="@id/homePage2" />
     </fragment>
 </navigation>

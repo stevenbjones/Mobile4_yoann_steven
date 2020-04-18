@@ -92,13 +92,6 @@ class MainActivity : AppCompatActivity() {
                         .addOnFailureListener { exception ->
                             Log.d(TAG, "get failed with ", exception)
                         }
-
-                    //Het invullen van de weetjes
-                    //Hier moet dus de weetjes van de dag ingevuld worden in plaats van "hier komen de weetjes"
-
-
-
-
                 }
                 else{
                     Toast.makeText(this, ""+response!!.error!!.message,Toast.LENGTH_SHORT).show()
