@@ -8,4 +8,5 @@
     <string name="LastName">Last name</string>
     <string name="Weeks">Weeks</string>
     <string name="Register">Register</string>
+    <string name="one">1</string>
 </resources>

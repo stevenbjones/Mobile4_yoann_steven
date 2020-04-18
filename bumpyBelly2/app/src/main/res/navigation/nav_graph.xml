@@ -5,15 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/welcomeFragment">
     <fragment
-        android:id="@+id/homePage2"
-        android:name="com.example.bumpy_belly2.HomePage"
-        android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" >
-        <action
-            android:id="@+id/action_homePage2_to_kalenderFragment"
-            app:destination="@id/kalenderFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/kalenderFragment"
         android:name="com.example.bumpy_belly2.KalenderFragment"
         android:label="fragment_kalender"
@@ -26,9 +17,6 @@
         <action
             android:id="@+id/action_welcomeFragment_to_zwangerschapRegistratieFragment"
             app:destination="@id/zwangerschapRegistratieFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_homePage22"
-            app:destination="@id/homePage2" />
     </fragment>
     <fragment
         android:id="@+id/zwangerschapRegistratieFragment"
@@ -36,7 +24,19 @@
         android:label="fragment_zwangerschap_registratie"
         tools:layout="@layout/fragment_zwangerschap_registratie" >
         <action
-            android:id="@+id/action_zwangerschapRegistratieFragment_to_homePage22"
-            app:destination="@id/homePage2" />
+            android:id="@+id/action_zwangerschapRegistratieFragment_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/homePage"
+        android:name="com.example.bumpy_belly2.HomePage"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePage_to_kalenderFragment"
+            app:destination="@id/kalenderFragment" />
+        <action
+            android:id="@+id/action_homePage_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
     </fragment>
 </navigation>

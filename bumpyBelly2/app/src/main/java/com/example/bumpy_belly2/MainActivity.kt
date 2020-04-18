@@ -6,6 +6,8 @@ package com.example.bumpy_belly2
     import android.content.Intent
     import android.os.Bundle
     import android.util.Log
+    import android.view.View
+    import android.widget.Button
     import android.widget.TextView
     import android.widget.Toast
     import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,7 @@ package com.example.bumpy_belly2
 
     import kotlinx.android.synthetic.main.activity_main.*
     import kotlinx.android.synthetic.main.fragment_home_page.*
+    import kotlinx.android.synthetic.main.fragment_welcome.*
     import java.util.*
 
 
@@ -71,27 +74,13 @@ class MainActivity : AppCompatActivity() {
 
                     //VoegFactsToeAanDataBase()
 
+                    //btn ga
+                    val ga = findViewById<Button>(R.id.btnGa)
+                    ga.visibility= View.VISIBLE
+
 
                     //weet niet of dit een goeie methode is om het te doen
-                    nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
-
-                    //Haal fact 1 uit de database
-                    val docRef = db.collection("Facts").document("1")
-                    docRef.get()
-                        .addOnSuccessListener { document ->
-                            if (document != null) {
-                                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-
-                                //Vul textfield met het field FACT van fact1
-                                findViewById<TextView>(R.id.TxtWeetjes).text = document.getString("Fact")
-
-                            } else {
-                                Log.d(TAG, "No such document")
-                            }
-                        }
-                        .addOnFailureListener { exception ->
-                            Log.d(TAG, "get failed with ", exception)
-                        }
+                   // nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
                 }
                 else{
                     Toast.makeText(this, ""+response!!.error!!.message,Toast.LENGTH_SHORT).show()
@@ -99,6 +88,28 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+
+    //Geef de facts weer in txtweetjes.
+    fun GeefFactsWeer (){
+
+        //Haal fact 1 uit de database
+        val docRef = db.collection("Facts").document("1")
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+
+                    //Vul textfield met het field FACT van fact1
+                    findViewById<TextView>(R.id.TxtWeetjes).text = document.getString("Fact")
+
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
 
 
 
@@ -170,6 +181,8 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
+
 
         fun VoegUserToeAanDataBase(user: FirebaseUser) {
             //Maak hash om toe te kunnen voegen in database

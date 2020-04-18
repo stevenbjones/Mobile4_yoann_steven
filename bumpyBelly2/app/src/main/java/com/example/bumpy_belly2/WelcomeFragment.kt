@@ -36,6 +36,10 @@ class WelcomeFragment : Fragment() {
 
           //  navController!!.navigate(R.id.action_welcomeFragment2_to_homePage2)
            }
+        view.btnGa.setOnClickListener {
+
+            navController!!.navigate(R.id.action_welcomeFragment_to_zwangerschapRegistratieFragment)
+        }
         // Inflate the layout for this fragment
         return view
 
