@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
 
         lateinit var providers : List<AuthUI.IdpConfig>
 
-
-
+    // get the current user
+    val user = FirebaseAuth.getInstance().currentUser
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
                 val response = IdpResponse.fromResultIntent(data)
                 if(resultCode == Activity.RESULT_OK){
-                    val user = FirebaseAuth.getInstance().currentUser // get the current user
+
                     Toast.makeText(this, ""+user!!.email,Toast.LENGTH_SHORT).show()
 
 
@@ -75,8 +75,11 @@ class MainActivity : AppCompatActivity() {
                     //VoegFactsToeAanDataBase()
 
                     //btn ga
+                    //
                     val ga = findViewById<Button>(R.id.btnGa)
                     ga.visibility= View.VISIBLE
+
+
 
 
                     //weet niet of dit een goeie methode is om het te doen
@@ -90,26 +93,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     //Geef de facts weer in txtweetjes.
-    fun GeefFactsWeer (){
 
-        //Haal fact 1 uit de database
-        val docRef = db.collection("Facts").document("1")
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-
-                    //Vul textfield met het field FACT van fact1
-                    findViewById<TextView>(R.id.TxtWeetjes).text = document.getString("Fact")
-
-                } else {
-                    Log.d(TAG, "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-    }
 
 
 
@@ -182,7 +166,26 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    fun GeefFactsWeer (){
 
+        //Haal fact 1 uit de database
+        val docRef = db.collection("Facts").document("1")
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+
+                    //Vul textfield met het field FACT van fact1
+                    findViewById<TextView>(R.id.TxtWeetjes).text = document.getString("Fact")
+
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
 
         fun VoegUserToeAanDataBase(user: FirebaseUser) {
             //Maak hash om toe te kunnen voegen in database
