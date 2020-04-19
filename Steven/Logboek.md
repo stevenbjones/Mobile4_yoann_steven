@@ -12,6 +12,14 @@ Week5: 2uur
 
 *Implemteren firstestore : 2uur
 
-Week 6:
+Week 6: 4uur
 
-Implemteren firestore 4Uur
+*Implemteren firestore 4Uur
+
+Week 7: 5uur
+
+*Registratie user toevoegen in firestore: 3uur
+*Debuggen: 2uur
+
+Week8 : 2uur
+ *Registreren pragnancies 2uur
