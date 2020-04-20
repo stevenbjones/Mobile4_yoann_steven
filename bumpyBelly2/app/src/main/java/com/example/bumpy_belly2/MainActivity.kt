@@ -187,7 +187,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-        fun VoegUserToeAanDataBase(user: FirebaseUser) {
+    fun VoegUserToeAanDataBase(user: FirebaseUser) {
             //Maak hash om toe te kunnen voegen in database
             val testUser = hashMapOf(
                 "UserId" to user.uid
@@ -199,5 +199,25 @@ class MainActivity : AppCompatActivity() {
                 .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
                 .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
         }
+
+
+    fun CheckPregnancie(){
+
+        //De pregnancie uit de database
+        val docRef = db.collection("Pregnanties").document(user?.uid.toString())
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    //Hier heeft hij de pregnancie gevonden.
+                    //In deze case mag hij niet naar register form gaan
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+
+                } else {
+
+                    //Hier heeft hij niks gevonden. nu mag hij naar register form aaan
+                }
+            }
+
+    }
 
     }
