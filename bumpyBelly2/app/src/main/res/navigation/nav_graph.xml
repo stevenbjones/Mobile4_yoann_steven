@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_zwangerschapRegistratieFragment"
             app:destination="@id/zwangerschapRegistratieFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_homePage"
+            app:destination="@id/homePage" />
     </fragment>
     <fragment
         android:id="@+id/zwangerschapRegistratieFragment"

@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     //Zo kunnen we Tag gebruiken
     companion object {
-        private val TAG = "ClassName"
+          val TAG = "ClassName"
     }
         var navController: NavController? = null
 
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 AuthUI.IdpConfig.GoogleBuilder().build(),// Google build
                 AuthUI.IdpConfig.PhoneBuilder().build()// Phone build
             )
-            // showSignInOptions()
+
         }
 
 
@@ -103,8 +103,7 @@ class MainActivity : AppCompatActivity() {
                 AuthUI.getInstance().signOut(this@MainActivity)
                     .addOnCompleteListener {
                         sign_out.isEnabled = false
-                       // showSignInOptions()
-                        //nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
+                        showSignInOptions()
 
                     }
                     .addOnFailureListener {
@@ -200,6 +199,10 @@ class MainActivity : AppCompatActivity() {
                 .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
         }
 
+//Dit is een test voor U als ge wilt chekke of het werkt de juiste mannier zit al in WelcomeFragment.kt
+    // na het navigeren ga ge niks van buttons kunne gebruiken daarom best naar --> WelcomeFragment.kt te gaan daar gaat de navigatie met werking van btns wel werken.
+// als ge liever hierin test vergeet dan niet te switchen van fun ( CheckPregnancie naar ----> (activity as MainActivity).CheckPregnancie()) in het welcomefragment.kt
+// Maar het is beter gewoon in de WelcomeFragment te werken dat het direct juist geimplementeerd is voor de navigatie
 
     fun CheckPregnancie(){
 
@@ -210,11 +213,19 @@ class MainActivity : AppCompatActivity() {
                 if (document != null) {
                     //Hier heeft hij de pregnancie gevonden.
                     //In deze case mag hij niet naar register form gaan
+
+                   // nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
+
+
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+
+                    nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
 
                 } else {
 
                     //Hier heeft hij niks gevonden. nu mag hij naar register form aaan
+
+                    nav_host_fragment.activity!!.setContentView(R.layout.fragment_zwangerschap_registratie)
                 }
             }
 
