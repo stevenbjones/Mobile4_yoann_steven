@@ -41,10 +41,10 @@ class WelcomeFragment : Fragment() {
                     //Hier heeft hij de pregnancie gevonden.
                     //In deze case mag hij niet naar register form gaan
                     Log.d(MainActivity.TAG, "DocumentSnapshot data: ${document.data}")
+                    (activity as MainActivity).GeefFactsWeer()
                     navController!!.navigate(R.id.action_welcomeFragment_to_homePage)
                 } else {
-                                       navController!!.navigate(R.id.action_welcomeFragment_to_zwangerschapRegistratieFragment)
-
+                    navController!!.navigate(R.id.action_welcomeFragment_to_zwangerschapRegistratieFragment)
                 }
             }
     }
