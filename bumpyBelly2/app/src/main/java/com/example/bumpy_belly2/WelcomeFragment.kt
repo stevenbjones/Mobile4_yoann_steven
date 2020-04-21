@@ -37,13 +37,13 @@ class WelcomeFragment : Fragment() {
         val docRef = db.collection("Pregnanties").document(user?.uid.toString())
         docRef.get()
             .addOnSuccessListener { document ->
-                if (document != null) {
+                if (document.data != null) {
                     //Hier heeft hij de pregnancie gevonden.
                     //In deze case mag hij niet naar register form gaan
                     Log.d(MainActivity.TAG, "DocumentSnapshot data: ${document.data}")
                     navController!!.navigate(R.id.action_welcomeFragment_to_homePage)
                 } else {
-                    navController!!.navigate(R.id.action_welcomeFragment_to_zwangerschapRegistratieFragment)
+                                       navController!!.navigate(R.id.action_welcomeFragment_to_zwangerschapRegistratieFragment)
 
                 }
             }
