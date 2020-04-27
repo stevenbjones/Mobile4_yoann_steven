@@ -22,6 +22,7 @@ package com.example.bumpy_belly2
     import kotlinx.android.synthetic.main.activity_main.*
     import kotlinx.android.synthetic.main.fragment_home_page.*
     import kotlinx.android.synthetic.main.fragment_welcome.*
+    import java.sql.Timestamp
     import java.util.*
 
 
@@ -71,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                     //Functie om inglogde user toe te voegen aan database
                     VoegUserToeAanDataBase(user)
 
-                    //VoegFactsToeAanDataBase()
+                  //  VoegFactsToeAanDataBase()
 
                     //btn ga
                     val ga = findViewById<Button>(R.id.btnGa)
@@ -140,14 +141,22 @@ class MainActivity : AppCompatActivity() {
                 "De schoenmaat van een zwangere vrouw kan een hele maat groter worden door het vocht dat ze vasthoudt.",
                 "Naweeën vinden een half uur na de bevalling plaats en kunnen soms wel 15 dagen duren. Ze zorgen er voor dat de baarmoeder weer op zijn plaats komt. Gewone pijnstillers kunnen de pijn verhelpen.",
                 "Een verhoogde kans op een tweeling als er tweelingen in de directe familie voorkomen, vooral als er tweelingen zijn aan moeders kant",
-                "Maak de fopspeen van je kindje vast aan een ballon en vertel je kleintje dat het op ontdekkingsreis gaat in de ruimte."
+                "Maak de fopspeen van je kindje vast aan een ballon en vertel je kleintje dat het op ontdekkingsreis gaat in de ruimte.",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30"
             )
-
+           
             var x = 0
             while(x<Facts.count()){
 
                 val Fact = hashMapOf(
-                    "Fact" to Facts[x]
+                    "Fact" to Facts[x],
+                    "Week" to x
                 )
 
                 db.collection("Facts").document("$x")
