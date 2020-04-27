@@ -4,12 +4,14 @@ package com.example.bumpy_belly2
 
     import android.app.Activity
     import android.content.Intent
+    import android.os.Build
     import android.os.Bundle
     import android.util.Log
     import android.view.View
     import android.widget.Button
     import android.widget.TextView
     import android.widget.Toast
+    import androidx.annotation.RequiresApi
     import androidx.appcompat.app.AppCompatActivity
     import androidx.navigation.NavController
     import com.firebase.ui.auth.AuthUI
@@ -23,7 +25,9 @@ package com.example.bumpy_belly2
     import kotlinx.android.synthetic.main.fragment_home_page.*
     import kotlinx.android.synthetic.main.fragment_welcome.*
     import java.sql.Timestamp
+    import java.time.LocalDate
     import java.util.*
+    import kotlin.time.days
 
 
 class MainActivity : AppCompatActivity() {
@@ -59,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
             super.onActivityResult(requestCode, resultCode, data)
 
@@ -72,13 +77,11 @@ class MainActivity : AppCompatActivity() {
                     //Functie om inglogde user toe te voegen aan database
                     VoegUserToeAanDataBase(user)
 
-                  //  VoegFactsToeAanDataBase()
+                    VoegFactsToeAanDataBase()
 
                     //btn ga
                     val ga = findViewById<Button>(R.id.btnGa)
                     ga.visibility= View.VISIBLE
-
-
 
 
                     //weet niet of dit een goeie methode is om het te doen
@@ -117,6 +120,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Functie om facts toe te voegen aan database
+
         fun VoegFactsToeAanDataBase(){
 
             val Facts = arrayOf("Huilen in de baarmoeder. Baby’s oefenen in de baarmoeder al met huilen. Dit gebeurt meestal na ongeveer 28 weken zwangerschap. Ook is hij/zij in de buik al druk bezig met duimzuigen, schoppen en slikken.",
@@ -150,7 +154,8 @@ class MainActivity : AppCompatActivity() {
                 "29",
                 "30"
             )
-           
+
+
             var x = 0
             while(x<Facts.count()){
 
@@ -169,10 +174,11 @@ class MainActivity : AppCompatActivity() {
         }
 
     //Functie waardoor de facts gedisplayed worden op homescherm
+    @RequiresApi(Build.VERSION_CODES.O)
     fun GeefFactsWeer (){
 
         //Haal fact 1 uit de database
-        val docRef = db.collection("Facts").document("1")
+        val docRef = db.collection("Facts").document(LocalDate.now().dayOfMonth.toString())
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
