@@ -23,3 +23,8 @@ Week 7: 5uur
 
 Week8 : 2uur
  *Registreren pragnancies 2uur
+
+ Week9 : 
+
+ *Aanpassen database 3uur
+ *Facts laten weergeven perdag 1uur
