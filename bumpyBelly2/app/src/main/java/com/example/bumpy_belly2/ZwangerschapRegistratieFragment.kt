@@ -48,7 +48,7 @@ class ZwangerschapRegistratieFragment : Fragment() {
             )
 
             //Voeg het toe aan de database
-            db.collection("Pregnanties").document(user?.uid.toString())
+            db.collection("Pregnanties").document()
                 .set(testUser)
         }
 
