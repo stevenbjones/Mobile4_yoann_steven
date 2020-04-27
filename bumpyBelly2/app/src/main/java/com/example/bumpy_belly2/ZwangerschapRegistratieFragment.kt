@@ -34,6 +34,7 @@ class ZwangerschapRegistratieFragment : Fragment() {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_zwangerschap_registratie, container, false)
 
+        //Register zwangerschap
         view.btnRegister.setOnClickListener {
             navController!!.navigate(R.id.action_zwangerschapRegistratieFragment_to_homePage)
             (activity as MainActivity).GeefFactsWeer()

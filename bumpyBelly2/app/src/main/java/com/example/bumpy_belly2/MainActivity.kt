@@ -68,14 +68,12 @@ class MainActivity : AppCompatActivity() {
 
                     Toast.makeText(this, ""+user!!.email,Toast.LENGTH_SHORT).show()
 
-
                     //Functie om inglogde user toe te voegen aan database
                     VoegUserToeAanDataBase(user)
 
                     //VoegFactsToeAanDataBase()
 
                     //btn ga
-                    //
                     val ga = findViewById<Button>(R.id.btnGa)
                     ga.visibility= View.VISIBLE
 
@@ -92,11 +90,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-    //Geef de facts weer in txtweetjes.
-
-
-
-
+    //Met deze functie wordt de gebruiker aftgemeld
     fun signout(){
             sign_out.setOnClickListener {
                 //signout
@@ -165,6 +159,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    //Functie waardoor de facts gedisplayed worden op homescherm
     fun GeefFactsWeer (){
 
         //Haal fact 1 uit de database
@@ -186,49 +181,17 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    //REgistreerd user met UID in de firestore database
     fun VoegUserToeAanDataBase(user: FirebaseUser) {
             //Maak hash om toe te kunnen voegen in database
-            val testUser = hashMapOf(
-                "UserId" to user.uid
+            val User = hashMapOf(
+                "Email" to user.email
             )
 
             //Voeg het toe aan de database
-            db.collection("Users").document(user.email.toString())
-                .set(testUser)
+            db.collection("Users").document(user.uid)
+                .set(User)
                 .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
                 .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
         }
-
-//Dit is een test voor U als ge wilt chekke of het werkt de juiste mannier zit al in WelcomeFragment.kt
-    // na het navigeren ga ge niks van buttons kunne gebruiken daarom best naar --> WelcomeFragment.kt te gaan daar gaat de navigatie met werking van btns wel werken.
-// als ge liever hierin test vergeet dan niet te switchen van fun ( CheckPregnancie naar ----> (activity as MainActivity).CheckPregnancie()) in het welcomefragment.kt
-// Maar het is beter gewoon in de WelcomeFragment te werken dat het direct juist geimplementeerd is voor de navigatie
-
-    fun CheckPregnancie(){
-
-        //De pregnancie uit de database
-        val docRef = db.collection("Pregnanties").document(user?.uid.toString())
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    //Hier heeft hij de pregnancie gevonden.
-                    //In deze case mag hij niet naar register form gaan
-
-                   // nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
-
-
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-
-                    nav_host_fragment.activity!!.setContentView(R.layout.fragment_home_page)
-
-                } else {
-
-                    //Hier heeft hij niks gevonden. nu mag hij naar register form aaan
-
-                    nav_host_fragment.activity!!.setContentView(R.layout.fragment_zwangerschap_registratie)
-                }
-            }
-
-    }
-
     }

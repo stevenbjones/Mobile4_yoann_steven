@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.bumpy_belly2.MainActivity.Companion.TAG
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,7 +20,10 @@ import kotlinx.android.synthetic.main.fragment_welcome.view.*
 class WelcomeFragment : Fragment() {
     var navController: NavController? = null
 
+    //Firestore database
     val db = FirebaseFirestore.getInstance()
+
+    //De ingelogde user
     val user = FirebaseAuth.getInstance().currentUser
 
 
@@ -32,22 +36,33 @@ class WelcomeFragment : Fragment() {
 
     }
 
+    //Bool om te laten weten of pregnancie bestaat of niet
+    var gevonden = false
+
+    //Kijk in database of pregnancie met uid van user al bestaat.
+    // Zo ja ga naar homescherm
+    //Zo nee ga naar registerscherm
     fun CheckPregnancie(){
-        //De pregnancie uit de database
-        val docRef = db.collection("Pregnanties").document(user?.uid.toString())
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document.data != null) {
-                    //Hier heeft hij de pregnancie gevonden.
-                    //In deze case mag hij niet naar register form gaan
-                    Log.d(MainActivity.TAG, "DocumentSnapshot data: ${document.data}")
-                    (activity as MainActivity).GeefFactsWeer()
-                    navController!!.navigate(R.id.action_welcomeFragment_to_homePage)
-                } else {
+        db.collection("Pregnanties")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    if(document["Uid"].toString() == user?.uid){
+                        (activity as MainActivity).GeefFactsWeer()
+                        gevonden = true
+                        navController!!.navigate(R.id.action_welcomeFragment_to_homePage)
+                    }
+                }
+                if(!gevonden){
                     navController!!.navigate(R.id.action_welcomeFragment_to_zwangerschapRegistratieFragment)
                 }
+
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
             }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,7 +74,10 @@ class WelcomeFragment : Fragment() {
            }
         view.btnGa.setOnClickListener {
             //(activity as MainActivity).CheckPregnancie()
-          CheckPregnancie()
+
+            //Kijk of pregnancie al bestaat of niet
+            CheckPregnancie()
+
             //navController!!.navigate(R.id.action_welcomeFragment_to_zwangerschapRegistratieFragment)
         }
 
