@@ -15,8 +15,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_welcome.view.*
 
-
-
 class WelcomeFragment : Fragment() {
     var navController: NavController? = null
 
@@ -25,10 +23,6 @@ class WelcomeFragment : Fragment() {
 
     //De ingelogde user
     val user = FirebaseAuth.getInstance().currentUser
-
-
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,16 +67,9 @@ class WelcomeFragment : Fragment() {
             (activity as MainActivity).showSignInOptions()
            }
         view.btnGa.setOnClickListener {
-            //(activity as MainActivity).CheckPregnancie()
-
             //Kijk of pregnancie al bestaat of niet
             CheckPregnancie()
-
-            //navController!!.navigate(R.id.action_welcomeFragment_to_zwangerschapRegistratieFragment)
         }
-
-
-
         // Inflate the layout for this fragment
         return view
 

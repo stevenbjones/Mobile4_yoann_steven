@@ -9,6 +9,21 @@
 
 
     <TextView
+        android:id="@+id/textView6"
+        android:layout_width="139dp"
+        android:layout_height="59dp"
+        android:text="@string/Conceptiondate"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.064" />
+
+    <TextView
         android:id="@+id/textView4"
         android:layout_width="133dp"
         android:layout_height="49dp"
@@ -17,10 +32,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385" />
+        app:layout_constraintVertical_bias="0.386" />
 
     <TextView
         android:id="@+id/textView5"
@@ -31,24 +46,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.035" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="134dp"
-        android:layout_height="35dp"
-        android:text="@string/Weeks"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintVertical_bias="0.042" />
 
     <EditText
         android:id="@+id/txtFirstName"
@@ -64,23 +65,6 @@
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.389" />
-
-    <EditText
-        android:id="@+id/txtWeeks"
-        android:layout_width="177dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="360dp"
-        android:ems="10"
-        android:hint="@string/one"
-        android:inputType="number"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/txtLastName"
-        app:layout_constraintVertical_bias="0.03" />
 
     <EditText
         android:id="@+id/txtLastName"
@@ -119,6 +103,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <DatePicker
+        android:id="@+id/txtWeeks"
+        android:layout_width="231dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="4dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/txtLastName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,4 +9,6 @@
     <string name="Weeks">Weeks</string>
     <string name="Register">Register</string>
     <string name="one">1</string>
+    <string name="Startdate">Start date</string>
+    <string name="Conceptiondate">Conception date</string>
 </resources>
