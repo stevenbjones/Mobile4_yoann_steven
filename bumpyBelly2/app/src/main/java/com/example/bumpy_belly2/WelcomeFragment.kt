@@ -1,12 +1,14 @@
 package com.example.bumpy_belly2
 
 import android.app.Activity
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.bumpy_belly2.MainActivity.Companion.TAG
@@ -36,12 +38,13 @@ class WelcomeFragment : Fragment() {
     //Kijk in database of pregnancie met uid van user al bestaat.
     // Zo ja ga naar homescherm
     //Zo nee ga naar registerscherm
-    fun CheckPregnancie(){
-        db.collection("Pregnanties")
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun CheckPregnancie() {
+        db.collection("Users").document(user?.uid.toString()).collection("Pregnanties")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    if(document["Uid"].toString() == user?.uid){
+                    if(document["Actief"] == true){
                         (activity as MainActivity).GeefFactsWeer()
                         gevonden = true
                         navController!!.navigate(R.id.action_welcomeFragment_to_homePage)
@@ -55,8 +58,11 @@ class WelcomeFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting documents: ", exception)
             }
-    }
 
+    }
+    /************************************************************************************/
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

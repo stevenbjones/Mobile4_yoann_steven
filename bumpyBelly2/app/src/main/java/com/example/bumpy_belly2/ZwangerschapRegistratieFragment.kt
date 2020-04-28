@@ -51,16 +51,15 @@ class ZwangerschapRegistratieFragment : Fragment() {
 
             val user = FirebaseAuth.getInstance().currentUser
             val db = FirebaseFirestore.getInstance()
-            val testUser = hashMapOf(
-                "FirstName" to txtFirstName.text.toString(),
-                "StartDate" to (txtWeeks.dayOfMonth.toString() + " " + txtWeeks.month.toString() + " " + txtWeeks.year.toString()),
-                "LastName" to txtLastName.text.toString(),
-                "Uid" to user?.uid.toString()
+            val Zwangerschap = hashMapOf(
+                "Actief" to true,
+                "StartDate" to (txtWeeks.dayOfMonth.toString() + " " + (txtWeeks.month + 1).toString() + " " + txtWeeks.year.toString())
             )
 
             //Voeg het toe aan de database
-            db.collection("Pregnanties").document()
-                .set(testUser)
+
+                db.collection("Users").document(user?.uid.toString()).collection("Pregnanties").document()
+                .set(Zwangerschap)
         }
 else    {     val dialogBuilder = AlertDialog.Builder(activity!!)
                 dialogBuilder.setMessage("All fields must be filled in")
