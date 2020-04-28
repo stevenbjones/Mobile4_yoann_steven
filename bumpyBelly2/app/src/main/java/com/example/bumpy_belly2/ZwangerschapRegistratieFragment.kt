@@ -56,10 +56,14 @@ class ZwangerschapRegistratieFragment : Fragment() {
                 "StartDate" to (txtWeeks.dayOfMonth.toString() + " " + (txtWeeks.month + 1).toString() + " " + txtWeeks.year.toString())
             )
 
-            //Voeg het toe aan de database
+                // Referenctie naar de pregnacies van user
+              var DBPregnanties =  db.collection("Users").document(user?.uid.toString()).collection("Pregnanties").document()
+                DBPregnanties.set(Zwangerschap)
 
-                db.collection("Users").document(user?.uid.toString()).collection("Pregnanties").document()
-                .set(Zwangerschap)
+                //SubColletie van de User zijn pregnacie. Deze noemt children
+                DBPregnanties.collection("Children").document()
+                    .set(Zwangerschap)
+
         }
 else    {     val dialogBuilder = AlertDialog.Builder(activity!!)
                 dialogBuilder.setMessage("All fields must be filled in")
