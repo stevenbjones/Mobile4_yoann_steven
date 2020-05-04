@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,14 +22,19 @@ import kotlinx.android.synthetic.main.fragment_zwangerschap_registratie.view.*
 import kotlinx.android.synthetic.main.fragment_home_page.*
 import kotlinx.android.synthetic.main.fragment_zwangerschap_registratie.*
 import kotlinx.android.synthetic.main.fragment_zwangerschap_registratie.view.txtWeeks
+import java.time.LocalDate
 import java.util.*
 
+//     val day = txtWeeks.dayOfMonth
+//    val month = txtWeeks.month
+//    val year = txtWeeks.year
+//
+//
 
 class ZwangerschapRegistratieFragment : Fragment() {
 
     var navController: NavController? = null
     var optie: String =""
-
 
 
 
@@ -78,9 +84,10 @@ class ZwangerschapRegistratieFragment : Fragment() {
 
             val user = FirebaseAuth.getInstance().currentUser
             val db = FirebaseFirestore.getInstance()
+
             val Zwangerschap = hashMapOf(
                 "Actief" to true,
-                "StartDate" to (txtWeeks.dayOfMonth.toString() + " " + (txtWeeks.month + 1).toString() + " " + txtWeeks.year.toString())
+                "StartDate" to ("${txtWeeks.dayOfMonth} ${txtWeeks.month + 1} ${txtWeeks.year}")
 
 
             )
@@ -111,4 +118,9 @@ else    {     val dialogBuilder = AlertDialog.Builder(activity!!)
         return view
 
     }
+
+
 }
+
+
+////(txtWeeks.dayOfMonth.toString() + " " + (txtWeeks.month + 1).toString() + " " + txtWeeks.year.toString())
