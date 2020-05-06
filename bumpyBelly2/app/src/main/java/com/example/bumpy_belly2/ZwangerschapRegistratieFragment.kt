@@ -88,9 +88,11 @@ class ZwangerschapRegistratieFragment : Fragment() {
             val Zwangerschap = hashMapOf(
                 "Actief" to true,
                 "StartDate" to ("${txtWeeks.dayOfMonth} ${txtWeeks.month + 1} ${txtWeeks.year}")
-
-
             )
+
+            val SpecificatieChildren = hashMapOf(
+                "Gender" to optie
+                )
 
                 // Referenctie naar de pregnacies van user
               var DBPregnanties =  db.collection("Users").document(user?.uid.toString()).collection("Pregnanties").document()
@@ -98,9 +100,7 @@ class ZwangerschapRegistratieFragment : Fragment() {
 
                 //SubColletie van de User zijn pregnacie. Deze noemt children
                 DBPregnanties.collection("Children").document()
-                    .set( "Gender" to optie
-
-                    )
+                    .set( SpecificatieChildren)
 
         }
 else    {     val dialogBuilder = AlertDialog.Builder(activity!!)
