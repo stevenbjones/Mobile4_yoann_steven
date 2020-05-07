@@ -25,11 +25,6 @@ import kotlinx.android.synthetic.main.fragment_zwangerschap_registratie.view.txt
 import java.time.LocalDate
 import java.util.*
 
-//     val day = txtWeeks.dayOfMonth
-//    val month = txtWeeks.month
-//    val year = txtWeeks.year
-//
-//
 
 class ZwangerschapRegistratieFragment : Fragment() {
 
@@ -87,7 +82,18 @@ class ZwangerschapRegistratieFragment : Fragment() {
 
             val Zwangerschap = hashMapOf(
                 "Actief" to true,
-                "StartDate" to ("${txtWeeks.dayOfMonth} ${txtWeeks.month + 1} ${txtWeeks.year}")
+                "StartDate" to if(txtWeeks.dayOfMonth.toString().length == 1 && txtWeeks.month.toString().length == 1) {
+                                    ("0${txtWeeks.dayOfMonth} 0${txtWeeks.month + 1} ${txtWeeks.year}")
+                                }
+                                else if (txtWeeks.dayOfMonth.toString().length == 1 && txtWeeks.month.toString().length == 2 ){
+                                    ("0${txtWeeks.dayOfMonth} ${txtWeeks.month + 1} ${txtWeeks.year}")
+                                }
+                                else if (txtWeeks.dayOfMonth.toString().length == 2 && txtWeeks.month.toString().length == 1 ){
+                                      ("${txtWeeks.dayOfMonth} 0${txtWeeks.month + 1} ${txtWeeks.year}")
+                                 }
+                                else{
+                                     ("${txtWeeks.dayOfMonth} ${txtWeeks.month + 1} ${txtWeeks.year}")
+                                }
             )
 
             val SpecificatieChildren = hashMapOf(

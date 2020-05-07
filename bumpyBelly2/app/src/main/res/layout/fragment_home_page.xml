@@ -15,53 +15,73 @@
             android:id="@+id/sign_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/BellyRose"
             android:text="Sign out"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="302dp"
-            android:layout_height="367dp"
-            android:src="@drawable/pregnancy"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="weetje van de dag"
+            app:layout_constraintBottom_toTopOf="@+id/TxtWeetjes"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.447"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.928" />
 
         <TextView
             android:id="@+id/TxtWeetjes"
             android:layout_width="272dp"
             android:layout_height="131dp"
-            app:layout_constraintBottom_toTopOf="@+id/sign_out"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnVerwijder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            app:layout_constraintVertical_bias="0.503" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btnKalender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/BellyRose"
             android:text="Kalender"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/ImageWeek"
+            android:layout_width="318dp"
+            android:layout_height="186dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.232"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.054" />
+
+        <Button
+            android:id="@+id/btnVerwijder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/BellyRose"
+            android:text="@string/VerwijderZwangerschap"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnKalender"
+            app:layout_constraintHorizontal_bias="0.552"
             app:layout_constraintStart_toEndOf="@+id/sign_out" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,5 @@
     <string name="Startdate">Start date</string>
     <string name="Conceptiondate">Conception date</string>
     <string name="Gender">Gender</string>
+    <string name="VerwijderZwangerschap">Verwijder zwangerschap</string>
 </resources>
