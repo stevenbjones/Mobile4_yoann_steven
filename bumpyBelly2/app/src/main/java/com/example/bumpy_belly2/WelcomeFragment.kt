@@ -16,6 +16,9 @@ import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_welcome.view.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 class WelcomeFragment : Fragment() {
     var navController: NavController? = null
@@ -45,17 +48,26 @@ class WelcomeFragment : Fragment() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     if(document["Actief"] == true){
+
                         var MainAct = (activity as MainActivity)
-                        var weken =  MainAct.BerekenWekenKind()
-                        MainAct.GeefFactsEnFotoWeer(weken)
 
 
+                        var formatter = DateTimeFormatter.ofPattern("dd MM yyyy")
+
+                        val StartDate = LocalDate.parse(document["StartDate"].toString(), formatter)
+
+                        var WekenKind  = ChronoUnit.WEEKS.between(StartDate, LocalDate.now()).toInt()
+                        Log.d(TAG, WekenKind.toString())
+
+                        MainAct.GeefFactsEnFotoWeer(WekenKind)
                         gevonden = true
                         navController!!.navigate(R.id.action_welcomeFragment_to_homePage)
                     }
                 }
                 if(!gevonden){
+
                     navController!!.navigate(R.id.action_welcomeFragment_to_zwangerschapRegistratieFragment)
+
                 }
 
             }

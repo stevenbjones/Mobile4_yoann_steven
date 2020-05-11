@@ -192,38 +192,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
-     fun BerekenWekenKind() : Int  {
-        var WekenKind = 0
-
-
-            var dbRef = db.collection("Users").document(user?.uid.toString()).collection("Pregnanties")
-            dbRef.get()
-                .addOnSuccessListener { result ->
-                    for (document in result) {
-                        if(document["StartDate"] != ""){
-                            Log.d(TAG, document["StartDate"].toString())
-
-                            var formatter = DateTimeFormatter.ofPattern("dd MM yyyy")
-
-                            val StartDate = LocalDate.parse(document["StartDate"].toString(), formatter)
-
-                            WekenKind  = ChronoUnit.WEEKS.between(StartDate,LocalDate.now()).toInt()
-                            Log.d(TAG, WekenKind.toString())
-
-                        }
-                    }
-
-                }
-                .addOnFailureListener { exception ->
-                    Log.d(TAG, "Error getting documents: ", exception)
-
-                }
-
-        //gebruik wekenKind als index
-         return WekenKind
-    }
-
     //Functie waardoor de facts gedisplayed worden op homescherm
     @RequiresApi(Build.VERSION_CODES.O)
     fun GeefFactsEnFotoWeer (WekenKind: Int){
@@ -239,10 +207,14 @@ class MainActivity : AppCompatActivity() {
                     //Vul textfield met het field FACT van fact1
                     findViewById<TextView>(R.id.TxtWeetjes).text = document.getString("Fact")
 
-                    var fotoView = findViewById<ImageView>(R.id.ImageWeek)
-                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/bumpybelly2-cba8d.appspot.com/o/Weeks%2Fweek10.jpg?alt=media&token=84738a71-fb76-4fdf-bd45-75989d68f8f5").into(fotoView)
 
-
+                    val docRef = db.collection("Pictures").document(WekenKind.toString())
+                    docRef.get()
+                        .addOnSuccessListener { document ->
+                            var url = document.getString("Url")
+                            var fotoView = findViewById<ImageView>(R.id.ImageWeek)
+                            Picasso.get().load(url.toString()).into(fotoView)
+                        }
 
                 } else {
                     Log.d(TAG, "No such document")
