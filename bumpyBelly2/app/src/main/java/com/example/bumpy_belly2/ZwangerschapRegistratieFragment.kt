@@ -75,7 +75,10 @@ class ZwangerschapRegistratieFragment : Fragment() {
         view.btnRegister.setOnClickListener {
             if (txtFirstName.text.isNotEmpty()){
             navController!!.navigate(R.id.action_zwangerschapRegistratieFragment_to_homePage)
-            (activity as MainActivity).GeefFactsWeer()
+                var MainAct = (activity as MainActivity)
+                var weken =  MainAct.BerekenWekenKind()
+                MainAct.GeefFactsEnFotoWeer(weken)
+
 
             val user = FirebaseAuth.getInstance().currentUser
             val db = FirebaseFirestore.getInstance()

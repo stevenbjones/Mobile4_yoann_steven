@@ -4,30 +4,44 @@ package com.example.bumpy_belly2
 
     import android.app.Activity
     import android.content.Intent
+    import android.graphics.BitmapFactory
     import android.os.Build
     import android.os.Bundle
     import android.util.Log
     import android.view.View
     import android.widget.Button
+    import android.widget.ImageView
     import android.widget.TextView
     import android.widget.Toast
     import androidx.annotation.RequiresApi
     import androidx.appcompat.app.AppCompatActivity
+    import androidx.core.net.toUri
     import androidx.navigation.NavController
+    import com.bumptech.glide.Glide.with
     import com.firebase.ui.auth.AuthUI
     import com.firebase.ui.auth.IdpResponse
+    import com.google.android.gms.tasks.Tasks.await
     import com.google.firebase.auth.FirebaseAuth
     import com.google.firebase.auth.FirebaseUser
     import com.google.firebase.firestore.FirebaseFirestore
-    import com.google.firebase.firestore.Source
-
-    import kotlinx.android.synthetic.main.activity_main.*
+    import com.squareup.picasso.Picasso
     import kotlinx.android.synthetic.main.fragment_home_page.*
-    import kotlinx.android.synthetic.main.fragment_welcome.*
-    import java.sql.Timestamp
+
+    import kotlinx.coroutines.GlobalScope
+    import kotlinx.coroutines.delay
+    import kotlinx.coroutines.launch
+    import org.jetbrains.anko.custom.async
+    import org.jetbrains.anko.doAsync
+    import org.jetbrains.anko.toast
+    import org.jetbrains.anko.uiThread
+    import java.lang.System.load
+    import java.net.HttpURLConnection
+    import java.net.URL
     import java.time.LocalDate
+    import java.time.LocalDateTime
+    import java.time.format.DateTimeFormatter
     import java.util.*
-    import kotlin.time.days
+    import java.time.temporal.ChronoUnit
 
 
 class MainActivity : AppCompatActivity() {
@@ -37,6 +51,7 @@ class MainActivity : AppCompatActivity() {
           val TAG = "ClassName"
     }
         var navController: NavController? = null
+
 
 
     var Nalogin: Boolean = false
@@ -64,7 +79,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
             super.onActivityResult(requestCode, resultCode, data)
 
             if(requestCode == MY_REQUEST_CODE ){
@@ -76,7 +91,9 @@ class MainActivity : AppCompatActivity() {
                     //Functie om inglogde user toe te voegen aan database
                     VoegUserToeAanDataBase(user)
                     // functie om de facts toe te voegen aan de database
-                    VoegFactsToeAanDataBase()
+                   // VoegFactsToeAanDataBase()
+
+
 
                     val ga = findViewById<Button>(R.id.btnGa)
                     ga.visibility= View.VISIBLE
@@ -174,19 +191,58 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
+     fun BerekenWekenKind() : Int  {
+        var WekenKind = 0
+
+
+            var dbRef = db.collection("Users").document(user?.uid.toString()).collection("Pregnanties")
+            dbRef.get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        if(document["StartDate"] != ""){
+                            Log.d(TAG, document["StartDate"].toString())
+
+                            var formatter = DateTimeFormatter.ofPattern("dd MM yyyy")
+
+                            val StartDate = LocalDate.parse(document["StartDate"].toString(), formatter)
+
+                            WekenKind  = ChronoUnit.WEEKS.between(StartDate,LocalDate.now()).toInt()
+                            Log.d(TAG, WekenKind.toString())
+
+                        }
+                    }
+
+                }
+                .addOnFailureListener { exception ->
+                    Log.d(TAG, "Error getting documents: ", exception)
+
+                }
+
+        //gebruik wekenKind als index
+         return WekenKind
+    }
+
     //Functie waardoor de facts gedisplayed worden op homescherm
     @RequiresApi(Build.VERSION_CODES.O)
-    fun GeefFactsWeer (){
+    fun GeefFactsEnFotoWeer (WekenKind: Int){
 
+        Log.d(TAG, "weken kind  data: ${WekenKind}")
         //Haal fact 1 uit de database
-        val docRef = db.collection("Facts").document(LocalDate.now().dayOfMonth.toString())
+        val docRef = db.collection("Facts").document(WekenKind.toString())
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-
+                    Log.d(TAG, "weken kind  data: ${WekenKind}")
                     //Vul textfield met het field FACT van fact1
                     findViewById<TextView>(R.id.TxtWeetjes).text = document.getString("Fact")
+
+                    var fotoView = findViewById<ImageView>(R.id.ImageWeek)
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/bumpybelly2-cba8d.appspot.com/o/Weeks%2Fweek10.jpg?alt=media&token=84738a71-fb76-4fdf-bd45-75989d68f8f5").into(fotoView)
+
+
 
                 } else {
                     Log.d(TAG, "No such document")
@@ -195,6 +251,7 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
+
     }
 
     //Registreerd user met UID in de firestore database

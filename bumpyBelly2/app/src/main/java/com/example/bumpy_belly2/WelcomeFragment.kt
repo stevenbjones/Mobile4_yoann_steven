@@ -45,7 +45,11 @@ class WelcomeFragment : Fragment() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     if(document["Actief"] == true){
-                        (activity as MainActivity).GeefFactsWeer()
+                        var MainAct = (activity as MainActivity)
+                        var weken =  MainAct.BerekenWekenKind()
+                        MainAct.GeefFactsEnFotoWeer(weken)
+
+
                         gevonden = true
                         navController!!.navigate(R.id.action_welcomeFragment_to_homePage)
                     }
