@@ -4,7 +4,6 @@ package com.example.bumpy_belly2
 
     import android.app.Activity
     import android.content.Intent
-    import android.graphics.BitmapFactory
     import android.os.Build
     import android.os.Bundle
     import android.util.Log
@@ -15,12 +14,9 @@ package com.example.bumpy_belly2
     import android.widget.Toast
     import androidx.annotation.RequiresApi
     import androidx.appcompat.app.AppCompatActivity
-    import androidx.core.net.toUri
     import androidx.navigation.NavController
-    import com.bumptech.glide.Glide.with
     import com.firebase.ui.auth.AuthUI
     import com.firebase.ui.auth.IdpResponse
-    import com.google.android.gms.tasks.Tasks.await
     import com.google.firebase.auth.FirebaseAuth
     import com.google.firebase.auth.FirebaseUser
     import com.google.firebase.firestore.FirebaseFirestore
@@ -28,21 +24,7 @@ package com.example.bumpy_belly2
     import com.squareup.picasso.Picasso
     import kotlinx.android.synthetic.main.fragment_home_page.*
 
-    import kotlinx.coroutines.GlobalScope
-    import kotlinx.coroutines.delay
-    import kotlinx.coroutines.launch
-    import org.jetbrains.anko.custom.async
-    import org.jetbrains.anko.doAsync
-    import org.jetbrains.anko.toast
-    import org.jetbrains.anko.uiThread
-    import java.lang.System.load
-    import java.net.HttpURLConnection
-    import java.net.URL
-    import java.time.LocalDate
-    import java.time.LocalDateTime
-    import java.time.format.DateTimeFormatter
     import java.util.*
-    import java.time.temporal.ChronoUnit
 
 
 class MainActivity : AppCompatActivity() {
@@ -205,7 +187,8 @@ class MainActivity : AppCompatActivity() {
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                     Log.d(TAG, "weken kind  data: ${WekenKind}")
-                    //Vul textfield met het field FACT van fact1
+
+                    findViewById<TextView>(R.id.txtWeek).text =" Week ${WekenKind} :  "
                     findViewById<TextView>(R.id.TxtWeetjes).text = document.getString("Fact")
 
 
