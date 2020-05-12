@@ -19,6 +19,7 @@ package com.example.bumpy_belly2
     import com.firebase.ui.auth.IdpResponse
     import com.google.firebase.auth.FirebaseAuth
     import com.google.firebase.auth.FirebaseUser
+    import com.google.firebase.firestore.DocumentSnapshot
     import com.google.firebase.firestore.FirebaseFirestore
     import com.google.firebase.firestore.SetOptions
     import com.squareup.picasso.Picasso
@@ -174,10 +175,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
+   var documentID = ""
     //Functie waardoor de facts gedisplayed worden op homescherm
     @RequiresApi(Build.VERSION_CODES.O)
-    fun GeefFactsEnFotoWeer (WekenKind: Int){
+    fun GeefFactsEnFotoWeer (WekenKind: Int ){
 
         Log.d(TAG, "weken kind  data: ${WekenKind}")
         //Haal fact 1 uit de database
@@ -196,6 +197,7 @@ class MainActivity : AppCompatActivity() {
                     docRef.get()
                         .addOnSuccessListener { document ->
                             var url = document.getString("Url")
+                            findViewById<TextView>(R.id.txtFotoDetail).text =" FOTO DETAIL: steven <3 yoann"
                             var fotoView = findViewById<ImageView>(R.id.ImageWeek)
                             Picasso.get().load(url.toString()).into(fotoView)
                         }
@@ -224,7 +226,7 @@ class MainActivity : AppCompatActivity() {
                 .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
         }
 
-    var documentID = ""
+
     fun ZetPregnancieFalse(){
 
         val data = hashMapOf("Actief" to false)//

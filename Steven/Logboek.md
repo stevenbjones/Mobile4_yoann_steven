@@ -24,7 +24,13 @@ Week 7: 5uur
 Week8 : 2uur
  *Registreren pragnancies 2uur
 
- Week9 : 
+ Week9 : 4uur
 
  *Aanpassen database 3uur
  *Facts laten weergeven perdag 1uur
+
+ week10: 11uur
+
+ Facts en foto laten zien per week: 10uur (veel problemen met 2 fetches)
+ Zwangerschap kunnen verwijderen: 1uur
+

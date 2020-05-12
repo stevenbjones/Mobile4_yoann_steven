@@ -74,10 +74,6 @@ class ZwangerschapRegistratieFragment : Fragment() {
         //Register zwangerschap
         view.btnRegister.setOnClickListener {
             if (txtFirstName.text.isNotEmpty()){
-                (activity as MainActivity)
-               .GeefFactsEnFotoWeer(0)
-            navController!!.navigate(R.id.action_zwangerschapRegistratieFragment_to_homePage)
-
 
 
 
@@ -101,7 +97,8 @@ class ZwangerschapRegistratieFragment : Fragment() {
             )
 
             val SpecificatieChildren = hashMapOf(
-                "Gender" to optie
+                "Gender" to optie,
+                "Name" to txtFirstName.text.toString()
                 )
 
                 // Referenctie naar de pregnacies van user
@@ -123,8 +120,13 @@ else    {     val dialogBuilder = AlertDialog.Builder(activity!!)
                     })
                 val alert = dialogBuilder.create()
                 alert.setTitle("ERROR")
-                alert.show()       }
+                alert.show()      }
+
+            navController!!.navigate(R.id.action_zwangerschapRegistratieFragment_to_welcomeFragment)
+
         }
+
+
         return view
 
     }
@@ -132,5 +134,3 @@ else    {     val dialogBuilder = AlertDialog.Builder(activity!!)
 
 }
 
-
-////(txtWeeks.dayOfMonth.toString() + " " + (txtWeeks.month + 1).toString() + " " + txtWeeks.year.toString())
