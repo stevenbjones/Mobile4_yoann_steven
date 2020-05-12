@@ -24,6 +24,7 @@ package com.example.bumpy_belly2
     import com.google.firebase.auth.FirebaseAuth
     import com.google.firebase.auth.FirebaseUser
     import com.google.firebase.firestore.FirebaseFirestore
+    import com.google.firebase.firestore.SetOptions
     import com.squareup.picasso.Picasso
     import kotlinx.android.synthetic.main.fragment_home_page.*
 
@@ -239,4 +240,19 @@ class MainActivity : AppCompatActivity() {
                 .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
                 .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
         }
+
+    var documentID = ""
+    fun ZetPregnancieFalse(){
+
+        val data = hashMapOf("Actief" to false)//
+
+       db.collection("Users").document(user?.uid.toString()).collection("Pregnanties").document(documentID)
+           .set(data, SetOptions.merge())
+
+    }
+
+    fun HaalPregnancieOp(document: String){
+        documentID = document
+    }
+
     }

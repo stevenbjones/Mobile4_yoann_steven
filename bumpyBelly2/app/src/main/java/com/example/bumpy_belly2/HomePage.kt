@@ -46,6 +46,16 @@ class HomePage : Fragment() {
             navController!!.navigate(R.id.action_homePage_to_kalenderFragment)
 
         }
+        view.btnVerwijder.setOnClickListener {
+
+
+            var mainAct = (activity as MainActivity)
+            mainAct.ZetPregnancieFalse()
+            mainAct.signout()
+            navController!!.navigate(R.id.action_homePage_to_welcomeFragment)
+
+        }
+
 
         // Inflate the layout for this fragment
         return view

@@ -60,6 +60,7 @@ class WelcomeFragment : Fragment() {
                         Log.d(TAG, WekenKind.toString())
 
                         MainAct.GeefFactsEnFotoWeer(WekenKind)
+                        MainAct.HaalPregnancieOp(document.id)
                         gevonden = true
                         navController!!.navigate(R.id.action_welcomeFragment_to_homePage)
                     }
@@ -96,7 +97,4 @@ class WelcomeFragment : Fragment() {
         return view
 
     }
-
-
-
 }
