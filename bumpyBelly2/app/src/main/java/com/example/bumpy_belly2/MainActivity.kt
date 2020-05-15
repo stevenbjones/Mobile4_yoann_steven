@@ -26,6 +26,7 @@ package com.example.bumpy_belly2
     import kotlinx.android.synthetic.main.fragment_home_page.*
     import kotlinx.android.synthetic.main.fragment_welcome.*
 
+
     import java.util.*
 
 
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             providers = Arrays.asList<AuthUI.IdpConfig>(
                 AuthUI.IdpConfig.EmailBuilder().build(),// email build
                 AuthUI.IdpConfig.GoogleBuilder().build(),// Google build
-                AuthUI.IdpConfig.PhoneBuilder().build()// Phone build
+                AuthUI.IdpConfig.PhoneBuilder().build() // Phone build
             )
 
         }
@@ -91,17 +92,16 @@ class MainActivity : AppCompatActivity() {
 
     //Met deze functie wordt de gebruiker afgemeld
     fun signout(){
-            sign_out.setOnClickListener {
+
                 //signout
                 AuthUI.getInstance().signOut(this@MainActivity)
                     .addOnCompleteListener {
-                        sign_out.isEnabled = false
                         showSignInOptions()
                     }
                     .addOnFailureListener {
                             e ->   Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
                     }
-            }
+
         }
 
         fun showSignInOptions(){

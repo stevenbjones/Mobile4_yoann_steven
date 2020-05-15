@@ -64,35 +64,18 @@ class Change_pregnancy : Fragment() {
            if(!checkBoxCancel.isChecked)
            {
                // Als de checkBox "cancel" niet gechecked is zou hij de aanpassingen moeten uitvoeren.
-               //Functies oproepen die van de main afkomstig zijn crashen in deze methode.
+
                navController!!.navigate(R.id.action_change_pregnancy_to_homePage)
            }
             else
            {
-
-               //Hier heb ik alles al gezet van de btn verwijder.
-               //Maar ook hier crasht het weer doordat de main niet aanspreekbaar is.
-
-               // var mainAct = (activity as MainActivity)
-               //  mainAct.ZetPregnancieFalse()
-               // mainAct.signout()
+               var mainAct = (activity as MainActivity)
+               mainAct.ZetPregnancieFalse()
+               mainAct.signout()
                navController!!.navigate(R.id.action_change_pregnancy_to_welcomeFragment)
            }
 
         }
-
-        //Dit is om te testen of het met een btn wel ging --> dit gaat dus ook niet
-        // Er is een probleem als je een functie van de main oproept --> app crasht onmiddelijk
-        //deze methode enkel gebruiken om te testen, de knop is niet smooth genoeg om een zwangerschap afbraak te bevestigen.
-
-        view.btntest.setOnClickListener {
-          //(activity as MainActivity).signout()
-            navController!!.navigate(R.id.action_change_pregnancy_to_welcomeFragment)
-
-        }
-
-
-
 
 
         // Inflate the layout for this fragment

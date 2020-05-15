@@ -17,4 +17,8 @@
     <string name="Save">Save</string>
     <string name="YES">Yes</string>
     <string name="CancelP">Cancel pregnancy</string>
+    <string name="Facebook_app_id" translatable="false">557738688491527</string>
+    <string name="Facebook_login_protocol_scheme" translatable="false">fb557738688491527</string>
+
+
 </resources>
