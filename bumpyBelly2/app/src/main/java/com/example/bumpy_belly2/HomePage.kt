@@ -1,7 +1,6 @@
 package com.example.bumpy_belly2
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.bumptech.glide.Glide
-import com.bumptech.glide.module.AppGlideModule
-import com.firebase.ui.storage.images.FirebaseImageLoader
-import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.fragment_home_page.view.*
 
 
@@ -42,19 +37,19 @@ class HomePage : Fragment() {
             navController!!.navigate(R.id.action_homePage_to_welcomeFragment)
 
         }
-        view.btnKalender.setOnClickListener {
-            navController!!.navigate(R.id.action_homePage_to_kalenderFragment)
+        view.btnChangePregnancy.setOnClickListener {
+            navController!!.navigate(R.id.action_homePage_to_change_pregnancy)
 
         }
-        view.btnVerwijder.setOnClickListener {
+      //  view.btnVerwijder.setOnClickListener {
 
 
-            var mainAct = (activity as MainActivity)
-            mainAct.ZetPregnancieFalse()
-            mainAct.signout()
-            navController!!.navigate(R.id.action_homePage_to_welcomeFragment)
+           // var mainAct = (activity as MainActivity)
+          //  mainAct.ZetPregnancieFalse()
+           // mainAct.signout()
+           // navController!!.navigate(R.id.action_homePage_to_welcomeFragment)
 
-        }
+       // }
 
 
         // Inflate the layout for this fragment

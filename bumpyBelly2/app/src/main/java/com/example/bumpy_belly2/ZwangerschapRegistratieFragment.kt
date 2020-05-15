@@ -73,9 +73,6 @@ class ZwangerschapRegistratieFragment : Fragment() {
 
         //Register zwangerschap
         view.btnRegister.setOnClickListener {
-            if (txtFirstName.text.isNotEmpty()){
-
-
 
             val user = FirebaseAuth.getInstance().currentUser
             val db = FirebaseFirestore.getInstance()
@@ -109,23 +106,9 @@ class ZwangerschapRegistratieFragment : Fragment() {
                 DBPregnanties.collection("Children").document()
                     .set( SpecificatieChildren)
 
-        }
-else    {     val dialogBuilder = AlertDialog.Builder(activity!!)
-                dialogBuilder.setMessage("All fields must be filled in")
-
-                    .setCancelable(false)
-                    .setPositiveButton("Ok", DialogInterface.OnClickListener {
-                            dialog, id ->
-                        dialog.dismiss()
-                    })
-                val alert = dialogBuilder.create()
-                alert.setTitle("ERROR")
-                alert.show()      }
-
             navController!!.navigate(R.id.action_zwangerschapRegistratieFragment_to_welcomeFragment)
 
         }
-
 
         return view
 

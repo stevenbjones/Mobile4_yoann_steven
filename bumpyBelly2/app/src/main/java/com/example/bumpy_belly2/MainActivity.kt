@@ -24,6 +24,7 @@ package com.example.bumpy_belly2
     import com.google.firebase.firestore.SetOptions
     import com.squareup.picasso.Picasso
     import kotlinx.android.synthetic.main.fragment_home_page.*
+    import kotlinx.android.synthetic.main.fragment_welcome.*
 
     import java.util.*
 

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "547480156995-bm5acrenpkpr23qn0dr8tlhalt8nc9e5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bumpy_belly2",
+            "certificate_hash": "497421655b2f6acfc2348cff0e625503f18f950b"
+          }
+        },
+        {
           "client_id": "547480156995-p9tsv4t6ns8bg85ajuhincs3r4e2nbpl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -13,4 +13,8 @@
     <string name="Conceptiondate">Conception date</string>
     <string name="Gender">Gender</string>
     <string name="VerwijderZwangerschap">Verwijder zwangerschap</string>
+    <string name="Changepregnancy">Change pregnancy</string>
+    <string name="Save">Save</string>
+    <string name="YES">Yes</string>
+    <string name="CancelP">Cancel pregnancy</string>
 </resources>
