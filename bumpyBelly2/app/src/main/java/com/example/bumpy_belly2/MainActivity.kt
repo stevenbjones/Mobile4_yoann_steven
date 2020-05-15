@@ -240,5 +240,4 @@ class MainActivity : AppCompatActivity() {
     fun HaalPregnancieOp(document: String){
         documentID = document
     }
-
     }
