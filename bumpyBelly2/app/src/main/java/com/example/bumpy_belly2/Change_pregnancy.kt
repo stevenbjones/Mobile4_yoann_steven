@@ -86,7 +86,7 @@ class Change_pregnancy : Fragment() {
         //deze methode enkel gebruiken om te testen, de knop is niet smooth genoeg om een zwangerschap afbraak te bevestigen.
 
         view.btntest.setOnClickListener {
-          //  (activity as MainActivity).signout()
+          //(activity as MainActivity).signout()
             navController!!.navigate(R.id.action_change_pregnancy_to_welcomeFragment)
 
         }
