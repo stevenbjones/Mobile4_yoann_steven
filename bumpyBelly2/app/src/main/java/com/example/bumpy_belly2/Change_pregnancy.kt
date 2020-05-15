@@ -58,12 +58,12 @@ class Change_pregnancy : Fragment() {
             }
         }
 
-        //Het liefst op deze methode verder werken, deze is het beste om zo smooth mogelijk een afbraak van een zwangerschap te bevestigen.
 
         view.btnSave.setOnClickListener {
            if(!checkBoxCancel.isChecked)
            {
                // Als de checkBox "cancel" niet gechecked is zou hij de aanpassingen moeten uitvoeren.
+
 
                navController!!.navigate(R.id.action_change_pregnancy_to_homePage)
            }
