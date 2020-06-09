@@ -20,17 +20,17 @@ Lesweek 4:
 	Nieuwe applicatie aanmaken: : 10min
 	Jetpack navigatie in de app + lege fragments aanmaken met hun basic navigatie : 4uur
 	Firebase aanmaken met naam Bumpy_belly2 : 1uur
-	Firebase auth ui pop up pagina aanmaken (funties signOut, ShowSignInOPtions,OnActivityResult, providers + providerslist: 30 min
+	Firebase auth ui pop up pagina aanmaken (functies signOut, ShowSignInOPtions,OnActivityResult, providers + providerslist): 30 min
 	Welcome pagina : 30 min
 	Welcome pagina navigatie naar firebase auth ui: 30min
 
-// Apllictaie en firebase ik opniew maken omdat de vorige applicatie zodanig gecrasht was (dit was een test app) dat er geen weg meer terug was.
+// Apllictaie en firebase moest ik opniew maken omdat de vorige applicatie zodanig gecrasht was (dit was een test app) dat er geen weg meer terug was.
 // Omdat de crash gebeurde bij de firebase naam bumpybelly heb ik op Firebase een nieuwe naam gekozen (bumpy_belly2) zodat ik mij niet kon vergissen en de foutieve Firebase naam zou gebruiken.
 
 
 lesweek 5: 
 	Aanmaken firestore (Samen met Steven): 1uur
-	//Steven heeft hierna de firestore over genomen en de bijhorende functie voor gemaakt (VoegUsersToeAandatabase, ZetPregnancieFalse, HaalPregnancieOp, CheckPregnancie, Helft van functie Zwangerschap wegschrijven)
+		*//Steven heeft hierna de firestore over genomen en de bijhorende functie voor gemaakt (VoegUsersToeAandatabase, ZetPregnancieFalse, HaalPregnancieOp, CheckPregnancie, Helft van functie Zwangerschap wegschrijven)//*
 	Facts zoeken en implemeteren in firestore : 2uur
 
 Lesweek 6 : 
@@ -61,5 +61,5 @@ Komende lesweek:
 	Alles stylen zodat het eindproduct presenteerbaar is.
 	Bumpy Belly op de appstoren zetten
 	
-	//Voor ik dit kan doen moet steven de functies verder afmaken van de change pg en ook de fetch in orde brengen van de zwangerschapsRegistratie pg naar Home pg + ChangePregnancy pg naar Home pg
+	//Voor ik dit kan doen moet steven de functies verder afmaken van de change pg + de tekst bij de home page onder de foto laten verschijnen en ook de fetch in orde brengen van de zwangerschapsRegistratie pg naar Home pg + ChangePregnancy pg naar Home pg
 
