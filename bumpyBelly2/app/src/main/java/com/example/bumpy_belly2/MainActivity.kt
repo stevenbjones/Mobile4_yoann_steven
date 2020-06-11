@@ -198,7 +198,7 @@ class MainActivity : AppCompatActivity() {
                     docRef.get()
                         .addOnSuccessListener { document ->
                             var url = document.getString("Url")
-                            findViewById<TextView>(R.id.txtFotoDetail).text =" FOTO DETAIL: steven <3 yoann"
+                            findViewById<TextView>(R.id.txtFotoDetail).text = document.getString("Tekst")
                             var fotoView = findViewById<ImageView>(R.id.ImageWeek)
                             Picasso.get().load(url.toString()).into(fotoView)
                         }
