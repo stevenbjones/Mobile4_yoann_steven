@@ -2,11 +2,13 @@ package com.example.bumpy_belly2
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -14,6 +16,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_change_pregnancy.*
 import kotlinx.android.synthetic.main.fragment_change_pregnancy.view.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 
 /**
@@ -32,6 +37,7 @@ class Change_pregnancy : Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,8 +72,7 @@ class Change_pregnancy : Fragment() {
                val user = FirebaseAuth.getInstance().currentUser
                val db = FirebaseFirestore.getInstance()
 
-               val Zwangerschap = hashMapOf(
-                   "Actief" to true,
+               val Zwangerschap = hashMapOf<String,Any>(
                    "StartDate" to if(datePicker.dayOfMonth.toString().length == 1 && datePicker.month.toString().length == 1) {
                        ("0${datePicker.dayOfMonth} 0${datePicker.month + 1} ${datePicker.year}")
                    }
@@ -82,20 +87,28 @@ class Change_pregnancy : Fragment() {
                    }
                )
 
-               val SpecificatieChildren = hashMapOf(
+               val SpecificatieChildren = hashMapOf<String,String>(
                    "Gender" to optie,
                    "Name" to txtName.text.toString()
                )
 
-               // Referenctie naar de pregnacies van user
-               var DBPregnanties =  db.collection("Users").document(user?.uid.toString()).collection("Pregnanties").document()
-               DBPregnanties.set(Zwangerschap)
+               var MainAct = (activity as MainActivity)
+               db.collection("Users").document(user?.uid.toString()).collection("Pregnanties").document(MainAct.documentID)
+                   .update(mapOf(
+                       "Gender" to optie,
+                       "Name" to txtName.text.toString()
+                   ))
+               db.collection("Users").document(user?.uid.toString()).collection("Pregnanties").document(MainAct.documentID)
+                   .update(Zwangerschap)
 
-               //SubColletie van de User zijn pregnacie. Deze noemt children
-               DBPregnanties.collection("Children").document()
-                   .set( SpecificatieChildren)
 
 
+               var formatter = DateTimeFormatter.ofPattern("dd MM yyyy")
+
+               val StartDate = LocalDate.parse(Zwangerschap.get("StartDate").toString(), formatter)
+
+               var WekenKind  = ChronoUnit.WEEKS.between(StartDate, LocalDate.now()).toInt()
+               (activity as MainActivity).GeefFactsEnFotoWeer(WekenKind)
 
                navController!!.navigate(R.id.action_change_pregnancy_to_homePage)
            }
@@ -108,8 +121,6 @@ class Change_pregnancy : Fragment() {
            }
 
         }
-
-
         // Inflate the layout for this fragment
         return view
 

@@ -29,6 +29,11 @@ class WelcomeFragment : Fragment() {
     //De ingelogde user
     val user = FirebaseAuth.getInstance().currentUser
 
+    var globalWekenKind = 0
+
+    var zwangerschapId = ""
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
@@ -49,20 +54,25 @@ class WelcomeFragment : Fragment() {
                 for (document in result) {
                     if(document["Actief"] == true){
 
-                        var MainAct = (activity as MainActivity)
-
-
                         var formatter = DateTimeFormatter.ofPattern("dd MM yyyy")
 
                         val StartDate = LocalDate.parse(document["StartDate"].toString(), formatter)
 
                         var WekenKind  = ChronoUnit.WEEKS.between(StartDate, LocalDate.now()).toInt()
                         Log.d(TAG, WekenKind.toString())
+                        Log.d(TAG, "weken kind  oproepen ${WekenKind}")
 
-                        MainAct.GeefFactsEnFotoWeer(WekenKind)
-                        MainAct.HaalPregnancieOp(document.id)
+                        globalWekenKind = WekenKind
+                        zwangerschapId = document.id
+
                         gevonden = true
-                        navController!!.navigate(R.id.action_welcomeFragment_to_homePage)
+
+                        //Check huidige locatie.
+                        if (navController!!.currentDestination?.id != R.id.action_welcomeFragment_to_homePage) {
+                            vulFacts()
+                            navController!!.navigate(R.id.action_welcomeFragment_to_homePage)
+                        }
+
                     }
                 }
                 if(!gevonden){
@@ -79,6 +89,14 @@ class WelcomeFragment : Fragment() {
     }
     /************************************************************************************/
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun vulFacts(){
+
+        var MainAct = (activity as MainActivity)
+        MainAct.HaalPregnancieOp(zwangerschapId)
+        MainAct.GeefFactsEnFotoWeer(globalWekenKind)
+
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

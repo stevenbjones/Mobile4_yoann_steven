@@ -181,7 +181,7 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun GeefFactsEnFotoWeer (WekenKind: Int ){
 
-        Log.d(TAG, "weken kind  data: ${WekenKind}")
+
         //Haal fact 1 uit de database
         val docRef = db.collection("Facts").document(WekenKind.toString())
         docRef.get()
@@ -191,6 +191,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d(TAG, "weken kind  data: ${WekenKind}")
 
                     findViewById<TextView>(R.id.txtWeek).text =" Week ${WekenKind} :  "
+
                     findViewById<TextView>(R.id.TxtWeetjes).text = document.getString("Fact")
 
 
