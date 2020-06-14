@@ -1,0 +1,71 @@
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+-=-=-=-LOGBOEK YOANN ROBYN-=-=-=-=- 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Lesweek 1: 
+
+	Les 4uur
+
+Lesweek 3: 
+	Naam gekozen voor onze applicatie (Mijn vriendin zei belly pop en ik zei bumpy ride waardoor we deze hebben samengenomen tot bumpy belly)
+	Test applicatie aanmaken : 30min
+	Test Firebase aanmaken bumpybelly : 2uur
+	Firebase auth ui toepassen op deze test app (dit deed ik om te zien of het inloggen via firebase werkte): 2uur
+
+// Test app waarmee je kon inloggen en uitloggen met firebase auth ui
+// Nog geen navigatie of andere features aanwezig.
+// Ik had deze app gemaakt om te testen of de auth ui daadwerkelijk werkte.
+
+Lesweek 4:
+	Nieuwe applicatie aanmaken: : 10min
+	Jetpack navigatie in de app + lege fragments aanmaken met hun basic navigatie : 4uur
+	Firebase aanmaken met naam Bumpy_belly2 : 1uur
+	Firebase auth ui pop up pagina aanmaken (functies signOut, ShowSignInOPtions,OnActivityResult, providers + providerslist): 30 min
+	Welcome pagina : 30 min
+	Welcome pagina navigatie naar firebase auth ui: 30min
+
+// Apllictaie en firebase moest ik opniew maken omdat de vorige applicatie zodanig gecrasht was (dit was een test app) dat er geen weg meer terug was.
+// Omdat de crash gebeurde bij de firebase naam bumpybelly heb ik op Firebase een nieuwe naam gekozen (bumpy_belly2) zodat ik mij niet kon vergissen en de foutieve Firebase naam zou gebruiken.
+
+
+lesweek 5: 
+	Aanmaken firestore (Samen met Steven): 1uur
+		*//Steven heeft hierna de firestore over genomen en de bijhorende functie voor gemaakt (VoegUsersToeAandatabase, ZetPregnancieFalse, HaalPregnancieOp, CheckPregnancie, Helft van functie Zwangerschap wegschrijven)//*
+	Facts zoeken en implemeteren in firestore : 2uur
+
+Lesweek 6 : 
+	Zwangerschapsregistartie pagina maken : 1 uur
+	navigatie in de fucntie Registartie : 15min
+
+// Eerst stond er een controle op wat er werd ingevoerd maar achter af bleek dit niet handig te zijn om een baby te registreren daarom is deze verwijderd.
+
+Lesweek 7 : 
+	Facts ongeveer sorteren per week + nog facts toevogen: 1 uur
+	Datepicker ingevoegd op de pagina zwangerschapRegistartie om de zwangerschap datum te kunnen kiezen en deze laten werken in de functie registartie : 30min
+	Dropdownmenu op de pagina zwangerschapRegistartie waarin je de Gender kunt kiezen en deze laten werken in de functie registartie : 30min
+	Foto's van de evolutie gezocht (totaal 42) : 1uur
+	Storage bestudeert en geïmplementeerd in firebase, eens ik wist hoe de storage werkte heb ik de 42 foto's onder de map weeks opgeslagen: 30min
+	
+Lesweek 8
+	De link van de foto's in de database gezet zodat ze konden aangesproken worden: 30min
+
+Lesweek 9:
+	Pagina change_pregnancy aangemaakt: 30min
+	Checkbox geïmplementeerd , als de checkbox op checked staat zal de zwangerschap op niet actief word gezet maar wordt deze wel bijgehouden: 2uur --> dit loopt samen met bug fix sign_out.
+	Google login terug werkend gekregen --> was op een of andere mannier niet meer werkend: 30min
+	Bug fix van Sign_out functie: 2 uur --> dit loopt samen met checkbox implementeren.
+	Zoeken naar evolutie tekst die bij de foto hoort. : 30min
+	De evolutie tekst in de database zetten.: 15min
+
+Komende lesweek:
+	Alles stylen zodat het eindproduct presenteerbaar is.
+	Bumpy Belly op de appstoren zetten
+	
+	//Voor ik dit kan doen moet steven de functies verder afmaken van de change pg + de tekst bij de home page onder de foto laten verschijnen en ook de fetch in orde brengen van de zwangerschapsRegistratie pg naar Home pg + ChangePregnancy pg naar Home pg
+
+<<<<<<< HEAD
+	update : alles was in orde mijn git desktop wou niet mee werken
+=======
+	update : Nog steeds op STeven aan het wachten fetch van change pg naar home of andere implentatie nog steeds niet gebeurd alsook is niet veel veranderd aan de code van change... 
+		***** weet niet of hij nog moet pushen of niet...
+>>>>>>> parent of 5644351... Revert "update stand van zaken op 14/06"
