@@ -63,9 +63,5 @@ Komende lesweek:
 	
 	//Voor ik dit kan doen moet steven de functies verder afmaken van de change pg + de tekst bij de home page onder de foto laten verschijnen en ook de fetch in orde brengen van de zwangerschapsRegistratie pg naar Home pg + ChangePregnancy pg naar Home pg
 
-<<<<<<< HEAD
 	update : alles was in orde mijn git desktop wou niet mee werken
-=======
-	update : Nog steeds op STeven aan het wachten fetch van change pg naar home of andere implentatie nog steeds niet gebeurd alsook is niet veel veranderd aan de code van change... 
-		***** weet niet of hij nog moet pushen of niet...
->>>>>>> parent of 5644351... Revert "update stand van zaken op 14/06"
+
