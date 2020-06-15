@@ -71,7 +71,7 @@ class ZwangerschapRegistratieFragment : Fragment() {
         }
 
 
-        //Register zwangerschap
+        //update zwangerschap
         view.btnRegister.setOnClickListener {
 
             val user = FirebaseAuth.getInstance().currentUser
