@@ -69,6 +69,7 @@ class Change_pregnancy : Fragment() {
         view.btnSave.setOnClickListener {
            if(!checkBoxCancel.isChecked)
            {
+               if (txtName.text.isNotEmpty()){
                val user = FirebaseAuth.getInstance().currentUser
                val db = FirebaseFirestore.getInstance()
 
@@ -111,8 +112,24 @@ class Change_pregnancy : Fragment() {
                (activity as MainActivity).GeefFactsEnFotoWeer(WekenKind)
 
                navController!!.navigate(R.id.action_change_pregnancy_to_homePage)
-           }
-            else
+               }
+               else{
+                   val dialogBuilder = AlertDialog.Builder(activity!!)
+                   dialogBuilder.setMessage("All fields must be filled in")
+
+                       .setCancelable(false)
+                       .setPositiveButton("Ok", DialogInterface.OnClickListener {
+                               dialog, id ->
+                           dialog.dismiss()
+                       })
+                   val alert = dialogBuilder.create()
+                   alert.setTitle("ERROR")
+                   alert.show()
+               }
+
+            }
+
+           else
            {
                var mainAct = (activity as MainActivity)
                mainAct.ZetPregnancieFalse()
