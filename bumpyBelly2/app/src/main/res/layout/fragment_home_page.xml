@@ -13,11 +13,26 @@
         android:background="@android:color/darker_gray">
 
         <Button
+            android:id="@+id/btnChangePregnancy"
+            android:layout_width="127dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/BellyRose"
+            android:text="@string/Changepregnancy"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/sign_out" />
+
+        <Button
             android:id="@+id/sign_out"
-            android:layout_width="125dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="68dp"
-            android:layout_marginBottom="28dp"
+            android:layout_width="127dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/BellyRose"
             android:text="Sign out"
             android:textColor="@color/common_google_signin_btn_text_dark_default"
@@ -29,55 +44,65 @@
             android:id="@+id/txtWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="weetje van de week"
-            app:layout_constraintBottom_toTopOf="@+id/TxtWeetjes"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="@font/roboto_slab"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/ImageWeek"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.313" />
 
         <TextView
             android:id="@+id/TxtWeetjes"
-            android:layout_width="321dp"
-            android:layout_height="128dp"
-            android:layout_marginBottom="32dp"
+            android:layout_width="347dp"
+            android:layout_height="108dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/open_sans_light"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toTopOf="@+id/sign_out"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.477"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btnChangePregnancy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="24dp"
-            android:backgroundTint="@color/BellyRose"
-            android:text="@string/Changepregnancy"
-            android:textColor="@color/common_google_signin_btn_text_dark_default"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:id="@+id/ImageWeek"
             android:layout_width="318dp"
             android:layout_height="186dp"
-            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtFotoDetail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.762"
+            />
 
         <TextView
             android:id="@+id/txtFotoDetail"
-            android:layout_width="317dp"
-            android:layout_height="102dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="44dp"
-            android:text="TextView"
+            android:layout_width="351dp"
+            android:layout_height="147dp"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="@font/open_sans_light"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ImageWeek" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/roboto_slab"
+            android:text="Weetje van de week:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/TxtWeetjes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

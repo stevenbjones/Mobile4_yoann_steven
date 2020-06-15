@@ -2,12 +2,14 @@ package com.example.bumpy_belly2
 
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_home_page.*
 import kotlinx.android.synthetic.main.fragment_home_page.view.*
 
 
@@ -21,6 +23,8 @@ class HomePage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
+        txtFotoDetail.movementMethod = ScrollingMovementMethod()
+        TxtWeetjes.movementMethod = ScrollingMovementMethod()
 
 
     }
